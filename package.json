@@ -11,5 +11,9 @@
 	"devDependencies": {
 		"typescript": "^5.5.2",
 		"wrangler": "^4.45.3"
-	}
+	},
+	"dependencies": {
+		"@automerge/automerge-repo": "^2.4.0"
+	},
+	"license": "MIT"
 }
