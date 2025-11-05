@@ -6,16 +6,26 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "automerge-repo-sync-cloudflare-worker",
 	"main": "src/index.ts",
-	"compatibility_date": "2025-11-01",
-	"compatibility_flags": ["nodejs_compat"],
+	"compatibility_date": "2025-11-05",
+	"compatibility_flags": ["nodejs_compat", "increase_websocket_message_size"],
 	"migrations": [
 		{
 			"tag": "v1",
-			"new_classes": ["SyncServer"]
+			"new_sqlite_classes": ["MyDurableObject"]
+		},
+		{
+			"tag": "v2",
+			"new_sqlite_classes": ["SyncServer"],
+			"deleted_classes": ["MyDurableObject"]
 		}
 	],
 	"durable_objects": {
-		"bindings": [{ "class_name": "SyncServer", "name": "SYNC_SERVER" }]
+		"bindings": [
+			{
+				"class_name": "SyncServer",
+				"name": "SYNC_SERVER"
+			}
+		]
 	},
 	"observability": {
 		"enabled": true,
